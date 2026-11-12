@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -455,6 +455,28 @@ main section{scroll-margin-top:84px}
 .node-center{animation:centerGlow 4.2s ease-in-out infinite}
 @keyframes centerGlow{50%{box-shadow:0 12px 34px rgba(0,113,60,.28)}}
 
+/* 26 · Compromiso de aliados */
+.ally-pact{position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;margin-top:22px;padding:30px 32px;border-radius:22px;overflow:hidden;background:linear-gradient(135deg,var(--gg-green-deep),#006237 58%,var(--gg-green-mid));color:#fff;box-shadow:0 22px 48px rgba(4,61,36,.18)}
+.ally-pact::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.16) 1px,transparent 1px);background-size:20px 20px;opacity:.35;pointer-events:none}
+.ally-pact>*{position:relative;z-index:1}
+.ally-kicker{display:inline-flex;align-items:center;background:rgba(255,213,0,.15);border:1px solid rgba(255,213,0,.38);color:var(--gg-yellow);border-radius:999px;padding:6px 12px;font-size:10.5px;font-weight:900;letter-spacing:.8px;text-transform:uppercase}
+.ally-pact h3{color:#fff;font-size:clamp(23px,3.4vw,32px);line-height:1.12;margin:12px 0 10px}
+.ally-pact p{color:rgba(255,255,255,.86);font-size:15px;max-width:560px;margin:0}
+.ally-mark{justify-self:center;width:190px;height:190px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 35% 28%,rgba(255,213,0,.28),rgba(255,255,255,.06));border:1px solid rgba(255,213,0,.45);box-shadow:0 0 0 12px rgba(255,255,255,.05),inset 0 0 40px rgba(0,0,0,.14);animation:allyMarkFloat 6s ease-in-out infinite}
+.ally-mark b{font-size:34px;line-height:1;letter-spacing:1px;color:var(--gg-yellow)}
+.ally-mark span{font-size:10.5px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;color:#fff;margin-top:8px}
+.ally-mark small{font-size:9px;font-weight:800;letter-spacing:.9px;text-transform:uppercase;color:rgba(255,255,255,.68);margin-bottom:8px}
+@keyframes allyMarkFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.ally-gallery{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:20px}
+.ally-gallery:empty{display:none}
+.ally-logo{display:flex;align-items:center;justify-content:center;height:116px;margin:0;padding:16px;overflow:hidden;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);transition:transform .3s,box-shadow .3s,border-color .3s}
+.ally-logo img{display:block;width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;transition:transform .4s var(--ease-out)}
+.ally-logo:hover{transform:translateY(-4px);border-color:rgba(0,113,60,.3);box-shadow:0 14px 28px rgba(4,61,36,.12)}
+.ally-logo:hover img{transform:scale(1.05)}
+@media(max-width:900px){.ally-gallery{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.ally-pact{grid-template-columns:1fr;padding:24px}.ally-mark{grid-row:1;width:150px;height:150px;justify-self:start}.ally-mark b{font-size:28px}}
+@media(max-width:600px){.ally-gallery{grid-template-columns:repeat(2,1fr)}.ally-logo{height:100px;padding:12px}.ally-logo:last-child{grid-column:1/-1}}
+
 /* 23 · Vigía */
 .vigia-orb{position:relative;padding:26px 0}
 .vigia-orb::before{content:"";position:absolute;left:50%;top:50%;width:210px;height:210px;transform:translate(-50%,-50%);border-radius:50%;border:2px dashed rgba(0,113,60,.28);animation:slowSpin 26s linear infinite}
@@ -501,7 +523,7 @@ main section{scroll-margin-top:84px}
 @media (prefers-reduced-motion:reduce){
   .hero .orb,.hero .hero-top,.hero h1,.hero .sub,.hero .chips,.hero .hero-cta,.hero .scroll-hint,.hero-cta,
   .flow .arrow,.flow .step .n,.cyc-node.active .cyc-n,.chain-rel,.compare .vs,.node-center,#s28 .card::after,
-  .commit-bar div::after,.vigia-orb::before,.check-item.done .box{animation:none!important}
+  .commit-bar div::after,.vigia-orb::before,.check-item.done .box,.ally-mark{animation:none!important}
   html.js .rv{transition:none!important}
 }
 @media print{
@@ -543,7 +565,7 @@ main section{scroll-margin-top:84px}
   </div>
   <h1>TOLIMA <span class="clr">JUEGA</span> CLARO</h1>
   <div class="sub">En GanaGana innovamos contra el lavado</div>
-  <div class="chips"><span>🛡️ Prevención LA</span><span>🚫 FT</span><span>⚗️ FPADM</span><span>📘 Acuerdo 897 de 2026</span><span>📗 Acuerdo 905 de 2026</span></div>
+  <div class="chips"><span>🛡️ Prevención LA</span><span>🚫 FT</span><span>⚗️ FPADM</span><span>📘 Acuerdo 897 de 2026</span><span>📗 Acuerdo 905 de 2026</span><span>⚙️ SARO</span></div>
   <button type="button" class="btn yellow hero-cta" id="hero-start">🚀 Iniciar capacitación</button>
   <div class="scroll-hint">↓ Desliza para comenzar tu ruta</div>
 </section>
@@ -898,6 +920,31 @@ main section{scroll-margin-top:84px}
     <div class="role" id="role-arr"></div>
     <div class="role" id="role-com"></div>
     <div class="role" style="background:var(--gg-green-deep);color:#fff;border-top-color:var(--gg-yellow);display:flex;align-items:center;justify-content:center;text-align:center"><div><div style="font-size:24px">🤝</div><b style="color:var(--gg-yellow)">Contenido general + específico</b><p style="font-size:12px;color:#cfe6d8;margin-top:4px">Todos conocen lo básico; cada rol profundiza según su exposición.</p></div></div>
+  </div>
+</section>
+
+<section id="s20b" data-title="Compromiso de los aliados">
+  <span class="sec-tag">00 · Compromiso de los aliados</span>
+  <h2>Compromiso de los aliados con la gestión de riesgos</h2>
+  <p class="lead">Todos nuestros aliados cuentan con un sistema de administración de riesgos implementado.</p>
+  <div class="ally-pact">
+    <div>
+      <span class="ally-kicker">Compromiso compartido</span>
+      <h3>La gestión de riesgos también se construye con nuestros aliados.</h3>
+      <p>Una relación transparente y un sistema de administración de riesgos implementado protegen la operación y fortalecen la confianza en todo el sector.</p>
+    </div>
+    <div class="ally-mark" aria-hidden="true">
+      <small>Gestión de riesgos</small>
+      <b>SARO</b>
+      <span>Aliados</span>
+    </div>
+  </div>
+  <div class="ally-gallery" id="ally-gallery" aria-label="Aliados de GanaGana">
+    <figure class="ally-logo"><img src="assets/aliado-betplay.jpeg" alt="BetPlay" decoding="async"></figure>
+    <figure class="ally-logo"><img src="assets/aliado-kenno.jpeg" alt="Kenno" decoding="async"></figure>
+    <figure class="ally-logo"><img src="assets/aliado-su-red.jpeg" alt="Su Red" decoding="async"></figure>
+    <figure class="ally-logo"><img src="assets/aliado-raspa-y-listo.jpeg" alt="Raspa &amp; Listo" decoding="async"></figure>
+    <figure class="ally-logo"><img src="assets/aliado-super-astro.png" alt="Super Astro" decoding="async"></figure>
   </div>
 </section>
 
