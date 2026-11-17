@@ -1103,10 +1103,7 @@ main section{scroll-margin-top:84px}
   <h2>AHORA VEAMOS CÓMO LO HACEMOS REALIDAD</h2>
   <p class="lead">Conoce la campaña con la que GanaGana participa en el concurso <b>Antilavado de Negocios Responsables y Seguros</b>.</p>
   <div class="video-wrap video-vertical">
-    <video controls preload="metadata" playsinline aria-label="Video de campaña TOLIMA JUEGA CLARO">
-      <source src="assets/video-campana.mp4" type="video/mp4">
-      Tu navegador no permite reproducir este video.
-    </video>
+    <video id="campana-video" controls preload="metadata" playsinline poster="assets/video-poster.jpg" aria-label="Video de campaña TOLIMA JUEGA CLARO"></video>
   </div>
 </section>
 
@@ -1343,6 +1340,21 @@ $$('.role .r-more').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation(
  document.querySelectorAll('main .card>*:first-child,main .alert-card>*:first-child,main .step>*:first-child,main .callout>*:first-child,main .step .ico,main .role-ico').forEach(e=>{
   if(e.children.length===0&&e.textContent.trim()&&emo.test(e.textContent.trim())&&e.textContent.trim().length<8)e.classList.add('fx-ico');});
  document.querySelectorAll('.cyc-node').forEach(n=>n.addEventListener('click',()=>{n.classList.remove('ping');void n.offsetWidth;n.classList.add('ping');}));
+})();
+</script>
+<script>
+(function(){
+ const video=document.getElementById('campana-video');if(!video)return;
+ const source='assets/hls/video.m3u8';
+ if(video.canPlayType('application/vnd.apple.mpegurl')){video.src=source;return;}
+ const script=document.createElement('script');
+ script.src='assets/hls.light.min.js';
+ script.onload=function(){
+  if(!window.Hls||!Hls.isSupported())return;
+  const hls=new Hls({maxBufferLength:30,backBufferLength:30});
+  hls.loadSource(source);hls.attachMedia(video);
+ };
+ document.body.appendChild(script);
 })();
 </script>
 </body>
