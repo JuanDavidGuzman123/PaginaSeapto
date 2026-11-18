@@ -488,8 +488,30 @@ main section{scroll-margin-top:84px}
 #s15 .st-privacy .ico{flex:0 0 40px;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--gg-yellow);font-size:19px;box-shadow:0 5px 14px rgba(201,168,0,.28)}
 
 /* 16 · Pago de premios */
-#s16 .grid>.card .pill{font-size:14px;min-width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;padding:0 10px;transition:background .25s,color .25s,transform .25s}
-#s16 .grid>.card:hover .pill{background:var(--gg-green);color:#fff;transform:scale(1.08)}
+.pay-layout{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(280px,.75fr);gap:18px;margin-top:22px;align-items:start}
+.pay-route{min-width:0;padding:18px 20px;border:1px solid var(--line);border-radius:18px;background:var(--card);box-shadow:var(--shadow)}
+.pay-route-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 14px;padding-bottom:11px;border-bottom:1px solid #E3EFE7}
+.pay-route-head span{font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;font-weight:900;color:var(--gg-green)}
+.pay-route-head b{font-size:12px;color:var(--muted);font-weight:700}
+.pay-steps{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 22px;margin:5px 0 0;padding:0}
+.pay-step{display:flex;align-items:flex-start;gap:10px;min-width:0;padding:12px 0;border-bottom:1px dashed #E3EFE7}
+.pay-step:nth-last-child(-n+2){border-bottom:0;padding-bottom:4px}
+.pay-num{flex:0 0 30px;width:30px;height:30px;display:grid;place-items:center;border:1px solid #D5EADB;border-radius:9px;background:#EFF8F2;color:var(--gg-green);font-size:10.5px;font-weight:900;letter-spacing:.3px}
+.pay-copy{min-width:0}
+.pay-copy h4{display:flex;align-items:center;gap:5px;margin:1px 0 3px;color:var(--gg-green-deep);font-size:14.5px;line-height:1.25}
+.pay-copy h4 span{font-size:15px;line-height:1}
+.pay-copy p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
+.pay-stop{padding:19px 20px;border:1px solid #F0D3A6;border-top:4px solid var(--amber);border-radius:18px;background:linear-gradient(155deg,#FFF9EF 0%,#FFFDF8 100%);box-shadow:0 9px 24px rgba(93,58,0,.08)}
+.pay-stop-tag{display:inline-flex;padding:4px 9px;border-radius:20px;background:#FFEAC2;color:#7A4B00;font-size:9.5px;font-weight:900;letter-spacing:1.1px;text-transform:uppercase}
+.pay-stop h3{margin:9px 0 12px;color:var(--gg-green-deep);font-size:18px;line-height:1.2}
+.pay-checks{list-style:none;display:grid;gap:8px;margin:0;padding:0}
+.pay-checks li{display:flex;align-items:flex-start;gap:8px;color:#5C4A2E;font-size:13px;line-height:1.45;font-weight:600}
+.pay-checks li:before{content:"!";flex:0 0 18px;width:18px;height:18px;display:grid;place-items:center;margin-top:1px;border-radius:50%;background:#FBE3BB;color:#8A5A00;font-size:11px;font-weight:900}
+.pay-rule{margin-top:15px;padding:12px 13px;border-radius:12px;background:linear-gradient(135deg,#043D24,#0A6B3D);color:#fff;font-size:13px;line-height:1.45;font-weight:600}
+.pay-rule b{display:block;margin-bottom:3px;color:var(--gg-yellow);font-size:9.5px;letter-spacing:1px;text-transform:uppercase}
+@media(max-width:900px){.pay-layout{grid-template-columns:1fr}}
+@media(max-width:720px){.pay-steps{grid-template-columns:1fr}.pay-step:nth-last-child(-n+2){border-bottom:1px dashed #E3EFE7;padding-bottom:12px}.pay-step:last-child{border-bottom:0;padding-bottom:4px}}
+@media(max-width:480px){.pay-route{padding:16px}.pay-stop{padding:17px 16px}.pay-copy h4{font-size:14px}}
 
 /* 18d/18e · SICOF y SARO */
 #s18d .card h4::after,#s18e .card h4::after{content:"";display:block;width:34px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--gg-green),var(--gg-yellow));margin-top:7px}
@@ -881,16 +903,32 @@ main section{scroll-margin-top:84px}
 <section id="s16" data-title="Pago de premios">
   <span class="sec-tag">16 · Pago de premios · Fuerza de venta</span>
   <h2>Pago de premios</h2>
-  <p class="lead">Un momento clave, especialmente para la <b>fuerza de venta</b>. Sigue siempre estos pasos.</p>
-  <div class="grid g3" style="margin-top:22px">
-    <div class="card"><span class="pill">1</span><h4 style="color:var(--gg-green-deep);margin-top:8px">Identificación</h4><p style="font-size:13.5px;color:var(--muted)">Confirma quién cobra el premio.</p></div>
-    <div class="card"><span class="pill">2</span><h4 style="color:var(--gg-green-deep);margin-top:8px">Verificación</h4><p style="font-size:13.5px;color:var(--muted)">Coteja que los datos sean coherentes.</p></div>
-    <div class="card"><span class="pill">3</span><h4 style="color:var(--gg-green-deep);margin-top:8px">Documentación</h4><p style="font-size:13.5px;color:var(--muted)">Registra los soportes requeridos.</p></div>
-    <div class="card"><span class="pill">4</span><h4 style="color:var(--gg-green-deep);margin-top:8px">Procedimientos</h4><p style="font-size:13.5px;color:var(--muted)">Aplica los pasos definidos por GanaGana.</p></div>
-    <div class="card"><span class="pill">5</span><h4 style="color:var(--gg-green-deep);margin-top:8px">Señales de alerta</h4><p style="font-size:13.5px;color:var(--muted)">Atiende dudas o inconsistencias.</p></div>
-    <div class="card"><span class="pill">6</span><h4 style="color:var(--gg-green-deep);margin-top:8px">Reporte</h4><p style="font-size:13.5px;color:var(--muted)">Informa por el canal si algo no cuadra.</p></div>
+  <p class="lead">El pago es el cierre de la experiencia: confirma que <b>quien cobra es quien debe cobrar</b> y que todo está soportado antes de entregar el premio.</p>
+  <div class="pay-layout">
+    <div class="pay-route">
+      <div class="pay-route-head"><span>Ruta de pago</span><b>6 controles antes de pagar</b></div>
+      <ol class="pay-steps">
+        <li class="pay-step"><span class="pay-num">01</span><div class="pay-copy"><h4><span aria-hidden="true">🪪</span>Identifica a quien cobra</h4><p>Revisa el documento y confirma que la persona corresponde al ganador.</p></div></li>
+        <li class="pay-step"><span class="pay-num">02</span><div class="pay-copy"><h4><span aria-hidden="true">🔎</span>Verifica los datos</h4><p>Coteja nombre, documento y datos del premio; todo debe coincidir.</p></div></li>
+        <li class="pay-step"><span class="pay-num">03</span><div class="pay-copy"><h4><span aria-hidden="true">🎟️</span>Valida el premio</h4><p>Confirma condiciones, vigencia y autorizaciones aplicables.</p></div></li>
+        <li class="pay-step"><span class="pay-num">04</span><div class="pay-copy"><h4><span aria-hidden="true">📝</span>Documenta la entrega</h4><p>Deja registro de la identificación, los soportes y las autorizaciones.</p></div></li>
+        <li class="pay-step"><span class="pay-num">05</span><div class="pay-copy"><h4><span aria-hidden="true">🚩</span>Observa las señales</h4><p>Atiende inconsistencias, prisa o presión para omitir pasos.</p></div></li>
+        <li class="pay-step"><span class="pay-num">06</span><div class="pay-copy"><h4><span aria-hidden="true">📣</span>Reporta a tiempo</h4><p>Si algo no cuadra, no entregues el premio e informa por el canal establecido.</p></div></li>
+      </ol>
+    </div>
+    <aside class="pay-stop" aria-label="Señales para detener el pago">
+      <span class="pay-stop-tag">Pausa el pago</span>
+      <h3>No entregues el premio si…</h3>
+      <ul class="pay-checks">
+        <li>La persona no coincide con el ganador.</li>
+        <li>Quien cobra no está autorizado.</li>
+        <li>Los datos o soportes no son coherentes.</li>
+        <li>Alguien presiona para omitir controles.</li>
+      </ul>
+      <div class="pay-rule"><b>Regla de oro</b>Ante la duda, detente y consulta con Cumplimiento.</div>
+    </aside>
   </div>
-  <div class="disclaimer">Los montos, formatos y soportes específicos se rigen por los <b>procedimientos internos de GanaGana</b>. Este contenido debe validarse con el proceso de Cumplimiento.</div>
+  <div class="disclaimer">Montos, formatos y autorizaciones se rigen por los <b>procedimientos internos de GanaGana</b>. Este contenido debe validarse con el proceso de Cumplimiento.</div>
 </section>
 
 <section id="s17" data-title="Activos virtuales">
