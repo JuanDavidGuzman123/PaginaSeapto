@@ -67,6 +67,7 @@ h1.big{font-size:clamp(30px,6vw,58px);line-height:1.05;font-weight:900;color:var
 h2{font-size:clamp(24px,4vw,38px);font-weight:900;color:var(--gg-green-deep);line-height:1.12;margin-bottom:14px;letter-spacing:-.5px}
 h3{font-size:20px;font-weight:800;color:var(--gg-green);margin-bottom:8px}
 p.lead{font-size:18px;color:var(--muted);max-width:720px}
+#s03b>p.lead,#s05>p.lead,#s07>p.lead,#s09>p.lead,#s11>p.lead,#s12>p.lead,#s14>p.lead,#s15>p.lead,#s18d>p.lead,#s18g>p.lead,#s20>p.lead,#s23>p.lead,#s24>p.lead,#s27b>p.lead{width:max-content;max-width:100%}
 .accent{color:var(--gg-green)}
 .hl{background:linear-gradient(transparent 60%,var(--gg-yellow-soft) 60%);padding:0 3px;font-weight:700;color:var(--ink)}
 
@@ -122,6 +123,23 @@ footer b{color:var(--gg-yellow)}
 .stage-note p{position:relative;z-index:1;flex:1;min-width:0;font-size:14.5px;line-height:1.65;color:#40544A;font-weight:500;max-width:760px}
 @media(max-width:820px){.flow .arrow{transform:rotate(90deg)}}
 @media(max-width:480px){.stage-note{gap:11px;padding:14px 15px}.stage-note .stage-note-icon{flex-basis:30px;width:30px;height:30px;font-size:15px}}
+.dd-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
+.dd-tab{display:flex;align-items:center;gap:10px;min-width:0;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--gg-green-deep);font-family:inherit;text-align:left;cursor:pointer;transition:border-color .25s,box-shadow .25s,background .25s}
+.dd-tab .dd-ic{width:30px;height:30px;border-radius:50%;background:#EFF7F1;color:var(--gg-green-deep);display:grid;place-items:center;flex:0 0 30px;font-weight:900}
+.dd-tab b{display:block;font-size:13.5px;font-weight:800;line-height:1.2}
+.dd-tab small{display:block;margin-top:2px;color:var(--muted);font-size:11px;font-weight:600;line-height:1.25}
+.dd-tab.active{border-color:var(--gg-green);background:#F5FAF7;box-shadow:0 8px 20px rgba(4,61,36,.09)}
+.dd-tab.active .dd-ic{background:var(--gg-green);color:#fff}
+.dd-tab[data-level="alto"] .dd-ic{background:#FFF3D6;color:#8A5A00}
+.dd-tab[data-level="alto"].active{border-color:var(--amber);background:#FFFBF0}
+.dd-tab[data-level="alto"].active .dd-ic{background:var(--amber);color:#3A2A00}
+.dd-tab:focus-visible{outline:3px solid var(--gg-green);outline-offset:2px}
+.dd-panel{display:none;margin-top:12px;padding:16px 20px;border:1px solid var(--line);border-radius:14px;background:var(--card);box-shadow:var(--shadow)}
+.dd-panel.active{display:block;animation:ddIn .28s ease both}
+.dd-panel p{font-size:14px;color:var(--muted);line-height:1.6;margin:0}
+@keyframes ddIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media(max-width:820px){.dd-tabs{grid-template-columns:1fr}.dd-tab{padding:10px 12px}.dd-panel{padding:14px 16px}.dd-panel p{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.dd-panel.active{animation:none}}
 
 /* Alert cards */
 .alert-card{background:#FFF8F7;border:1px solid #F3C9C4;border-left:5px solid var(--red);border-radius:14px;padding:16px 18px;display:flex;gap:12px;align-items:flex-start}
@@ -776,13 +794,14 @@ main section{scroll-margin-top:84px}
     <div class="card"><b style="color:var(--gg-green)">¿Cuándo?</b><p style="font-size:13.5px;color:var(--muted);margin-top:4px">Al vincular y durante toda la relación, según el riesgo.</p></div>
     <div class="card"><b style="color:var(--gg-green)">¿Qué se verifica?</b><p style="font-size:13.5px;color:var(--muted);margin-top:4px">Identidad, actividad, origen de recursos y coherencia.</p></div>
   </div>
-  <div class="flow" style="margin-top:22px">
-    <div class="step"><div class="n">○</div><h4 style="color:var(--gg-green-deep)">Estándar</h4><p style="font-size:13px;color:var(--muted)">Verificación estándar para la mayoría de casos.</p></div>
-    <div class="arrow">→</div>
-    <div class="step"><div class="n">−</div><h4 style="color:var(--gg-green-deep)">Simplificada</h4><p style="font-size:13px;color:var(--muted)">Menor exigencia cuando el riesgo es bajo.</p></div>
-    <div class="arrow">→</div>
-    <div class="step" style="border-color:var(--amber)"><div class="n" style="background:var(--amber)">+</div><h4 style="color:var(--gg-green-deep)">Intensificada</h4><p style="font-size:13px;color:var(--muted)">Mayor profundidad cuando el riesgo es alto (p. ej. PEP).</p></div>
+  <div class="dd-tabs" role="tablist" aria-label="Niveles de debida diligencia">
+    <button type="button" class="dd-tab active" id="dd-tab-0" role="tab" aria-selected="true" aria-controls="dd-panel-0" data-level="estandar"><span class="dd-ic" aria-hidden="true">○</span><span><b>Estándar</b><small>Riesgo moderado o normal</small></span></button>
+    <button type="button" class="dd-tab" id="dd-tab-1" role="tab" aria-selected="false" aria-controls="dd-panel-1" data-level="bajo"><span class="dd-ic" aria-hidden="true">−</span><span><b>Simplificada</b><small>Riesgo bajo</small></span></button>
+    <button type="button" class="dd-tab" id="dd-tab-2" role="tab" aria-selected="false" aria-controls="dd-panel-2" data-level="alto"><span class="dd-ic" aria-hidden="true">+</span><span><b>Intensificada</b><small>Riesgo alto / PEP</small></span></button>
   </div>
+  <div class="dd-panel active" id="dd-panel-0" role="tabpanel" aria-labelledby="dd-tab-0" tabindex="0"><p>Se aplica a clientes o contrapartes con un riesgo moderado o normal. Requiere verificar la identidad, conocer la actividad económica, identificar el beneficiario final, revisar antecedentes y hacer seguimiento a la relación.</p></div>
+  <div class="dd-panel" id="dd-panel-1" role="tabpanel" aria-labelledby="dd-tab-1" tabindex="0"><p>Se aplica a contrapartes, productos, canales o jurisdicciones calificadas como riesgo bajo, tras un análisis documentado de los riesgos. Asimismo, se suspenderá su aplicación ante la aparición de indicios o alertas de LA/FT/FPADM. En todo caso, se deberá dejar constancia escrita del análisis realizado.</p></div>
+  <div class="dd-panel" id="dd-panel-2" role="tabpanel" aria-labelledby="dd-tab-2" tabindex="0"><p>Se aplica a clientes o contrapartes de alto riesgo, tales como Personas Expuestas Políticamente (PEP), personas o jurisdicciones de alto riesgo, o cuando existen señales de alerta. Implica una investigación más profunda sobre el origen de los fondos, la estructura de propiedad, los beneficiarios finales y un monitoreo mucho más riguroso.</p></div>
   <div class="disclaimer">El alcance exacto de cada nivel se aplica según los <b>procedimientos internos de Cumplimiento de GanaGana</b>. Ante dudas, consulta al proceso de Cumplimiento.</div>
 </section>
 
@@ -1320,6 +1339,12 @@ $$('.role .r-more').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation(
  pv.addEventListener('click',()=>set(idx-1));nx.addEventListener('click',()=>set(idx+1));
  document.getElementById('stepper-15').addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();set(idx+1);}else if(e.key==='ArrowLeft'){e.preventDefault();set(idx-1);}});
  set(0);})();
+
+/* Niveles de debida diligencia */
+(function(){const tabs=$$('.dd-tab'),panels=$$('.dd-panel');if(!tabs.length||!panels.length)return;
+ function setTab(i){tabs.forEach((t,k)=>{const on=k===i;t.classList.toggle('active',on);t.setAttribute('aria-selected',String(on));t.tabIndex=on?0:-1;});panels.forEach(p=>p.classList.toggle('active',p.id===tabs[i].getAttribute('aria-controls')));}
+ tabs.forEach((t,i)=>{t.addEventListener('click',()=>setTab(i));t.addEventListener('keydown',e=>{if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft'&&e.key!=='Home'&&e.key!=='End')return;e.preventDefault();let n=i;if(e.key==='ArrowRight')n=(i+1)%tabs.length;else if(e.key==='ArrowLeft')n=(i-1+tabs.length)%tabs.length;else if(e.key==='Home')n=0;else n=tabs.length-1;setTab(n);tabs[n].focus();});});
+ setTab(0);})();
 
 /* Aparición escalonada con limpieza para no bloquear hovers */
 (function(){
